@@ -1,50 +1,50 @@
-import React from 'react'
-import { parse, rules, ruleStrings } from './parse'
+import React from 'react';
+import { parse, rules, ruleStrings } from './parse';
 
-let id = 0
+let id = 0;
 
 const base = {
   custom:
-    tag =>
-    attrs =>
+    (tag) =>
+    (attrs) =>
     (strings, ...exps) => {
-      id++
+      id++;
       const MarkComponent = React.memo(
         React.forwardRef((props, ref) => {
-          const { className: _className = '' } = props
-          let cssText = ''
+          const { className: _className = '' } = props;
+          let cssText = '';
           if (strings.length >= exps.length) {
             strings.forEach((string, index) => {
-              cssText += string
-              cssText += exps[index] ? exps[index](props) : ''
-            })
+              cssText += string;
+              cssText += exps[index] ? exps[index](props) : '';
+            });
           } else {
             exps.forEach((exp, index) => {
-              cssText += strings[index] || ''
-              cssText += exp(props)
-            })
+              cssText += strings[index] || '';
+              cssText += exp(props);
+            });
           }
-          const className = parse(cssText)
+          const className = parse(cssText);
 
           return React.createElement(tag, {
             ref,
             ...attrs(props),
             className: `${className} ${_className}`,
-            children: props.children
-          })
+            children: props.children,
+          });
         })
-      )
+      );
       if (tag && typeof tag.displayName === 'undefined') {
-        MarkComponent.displayName = tag.displayName ? tag.displayName : tag
+        MarkComponent.displayName = tag.displayName ? tag.displayName : tag;
       }
-      return MarkComponent
-    }
-}
+      return MarkComponent;
+    },
+};
 
 function wrapperBaseComponent(C) {
-  const D = base.custom(C)(() => {})
-  D.attrs = base.custom(C)
-  return D
+  const D = base.custom(C)(() => {});
+  D.attrs = base.custom(C);
+  return D;
 }
 
 const styled = {
@@ -53,7 +53,7 @@ const styled = {
   img: wrapperBaseComponent('img'),
   rules,
   parse,
-  ruleStrings
-}
+  ruleStrings,
+};
 
-export default styled
+export default styled;
