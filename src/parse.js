@@ -20,18 +20,24 @@ if (typeof document !== 'undefined') {
 }
 
 // https://github.com/darkskyapp/string-hash
+// function hashCode(str) {
+//   var hash = 5381,
+//     i = str.length
+
+//   while (i) {
+//     hash = (hash * 33) ^ str.charCodeAt(--i)
+//   }
+
+//   /* JavaScript does bitwise operations (like XOR, above) on 32-bit signed
+//    * integers. Since we want the results to be always positive, convert the
+//    * signed int to an unsigned by doing an unsigned bitshift. */
+//   return hash >>> 0
+// }
 function hashCode(str) {
-  var hash = 5381,
-    i = str.length;
-
-  while (i) {
-    hash = (hash * 33) ^ str.charCodeAt(--i);
+  for (var h = 5381 | 0, i = 0, l = x.length | 0; i < l; i++) {
+    h = (h << 5) + h + x.charCodeAt(i);
   }
-
-  /* JavaScript does bitwise operations (like XOR, above) on 32-bit signed
-   * integers. Since we want the results to be always positive, convert the
-   * signed int to an unsigned by doing an unsigned bitshift. */
-  return hash >>> 0;
+  return h >>> 0;
 }
 
 export const parse = (styleString) => {
