@@ -2,6 +2,8 @@
 
 > 一个很小很小的 css-in-js 实现，主要是对过往使用 css-in-js 的总结
 
+> a super tiny css-in-js lib and support ssr
+
 ## usage
 
 ```bash
