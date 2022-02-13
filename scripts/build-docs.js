@@ -2,6 +2,12 @@
 
 let { version } = require('../package.json');
 
+function backToOriginBranch() {
+  await $`git checkout main`;
+
+  await $`git stash pop`;
+}
+
 void (async function () {
   await $`echo "Building docs..."`;
 
@@ -9,7 +15,17 @@ void (async function () {
 
   await $`git checkout gh-pages`;
 
-  await $`git pull origin gh-pages`;
+  try {
+    await $`git pull origin gh-pages`;
+  } catch (e) {
+    if (/SSL_connect/.test(e.stderr)) {
+      backToOriginBranch();
+
+      await $`exit ${e.exitCode}`;
+
+      return;
+    }
+  }
 
   await $`git merge main --squash --no-edit`;
 
@@ -34,7 +50,5 @@ void (async function () {
     await $`echo "build docs done"`;
   }
 
-  await $`git checkout main`;
-
-  await $`git stash pop`;
+  backToOriginBranch();
 })();
