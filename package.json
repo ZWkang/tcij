@@ -8,7 +8,7 @@
     "changelog": "conventional-changelog -n ./customChangelogSetting.js -p angular -i CHANGELOG.md -s -r 10000",
     "docs:build": "dumi build",
     "docs:dev": "dumi dev",
-    "docs:publish": "zx scripts/build-docs.js"
+    "docs:publish": "./scripts/build-docs.js"
   },
   "author": "zwkang<kang95630@mail.com>",
   "license": "MIT",

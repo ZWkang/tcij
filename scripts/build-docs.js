@@ -21,7 +21,7 @@ if (await $`ls -l | grep -v "node_modules"`) {
 
 await $`npm run docs:build`;
 
-await $`git add dist`;
+await $`git add -f dist`;
 
 await $`git commit -m "docs: build ${version}"`;
 
