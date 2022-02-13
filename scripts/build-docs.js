@@ -24,11 +24,15 @@ void (async function () {
 
   await $`git add docs`;
 
-  await $`git commit -m "docs: build ${version}"`;
+  let str = await $`git status`;
 
-  await $`git push origin gh-pages -f`;
-
-  await $`echo "build docs done"`;
+  if (/clean/.test(str)) {
+    await $`echo "No changes to commit. return back branch"`;
+  } else {
+    await $`git commit -m "docs: build ${version}"`;
+    await $`git push origin gh-pages -f`;
+    await $`echo "build docs done"`;
+  }
 
   await $`git checkout main`;
 
