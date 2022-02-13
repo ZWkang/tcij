@@ -22,11 +22,17 @@ void (async function () {
 
   await $`npm run docs:build`;
 
+  await $`git rm -rf 'ls | grep -v "dist"'`;
+
+  await $`cp -rf ./dist/*`;
+
+  await $`rm -rf ./dist`;
+
   await $`git add -f dist`;
 
   await $`git commit -m "docs: build ${version}"`;
 
-  await $`git push origin gh-pages`;
+  await $`git push origin gh-pages -f`;
 
   await $`echo "build docs done"`;
 
