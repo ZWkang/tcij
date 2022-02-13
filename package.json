@@ -1,6 +1,6 @@
 {
   "name": "tcij",
-  "version": "0.0.0-alpha.3",
+  "version": "0.0.0-alpha.4",
   "description": "tiny css in js",
   "scripts": {
     "bundle": "rm -rf dist && cross-env NODE_ENV=production rollup -c",
