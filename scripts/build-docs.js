@@ -2,7 +2,7 @@
 
 let { version } = require('../package.json');
 
-function backToOriginBranch() {
+async function backToOriginBranch() {
   await $`git checkout main`;
 
   await $`git stash pop`;
