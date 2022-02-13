@@ -34,8 +34,9 @@ if (typeof document !== 'undefined') {
 //   return hash >>> 0
 // }
 function hashCode(str) {
-  for (var h = 5381 | 0, i = 0, l = x.length | 0; i < l; i++) {
-    h = (h << 5) + h + x.charCodeAt(i);
+  let h = 5381 | 0;
+  for (let i = 0, l = str.length | 0; i < l; i++) {
+    h = (h << 5) + h + str.charCodeAt(i);
   }
   return h >>> 0;
 }
