@@ -5,7 +5,7 @@ export default {
 
   outputPath: './docs',
 
-  publicPath: '/ticj/',
+  publicPath: '/tcij/',
 
   resolve: {
     includes: ['./site'],
