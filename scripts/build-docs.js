@@ -13,7 +13,7 @@ void (async function () {
 
   await $`git merge main --squash --no-edit`;
 
-  await $`rm -rf dist`;
+  await $`rm -rf docs`;
 
   if (await $`ls -l | grep -v "node_modules"`) {
     await $`echo "downloading node_modules..."`;
@@ -22,13 +22,7 @@ void (async function () {
 
   await $`npm run docs:build`;
 
-  await $`git rm -rf 'ls | grep -v "dist"'`;
-
-  await $`cp -rf ./dist/*`;
-
-  await $`rm -rf ./dist`;
-
-  await $`git add -f dist`;
+  await $`git add docs`;
 
   await $`git commit -m "docs: build ${version}"`;
 
