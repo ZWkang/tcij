@@ -1,0 +1,15 @@
+.umi
+
+dist
+
+node_modules
+
+*.lock
+
+*.log
+
+examples
+
+.travis.yml
+
+docs
