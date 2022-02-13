@@ -8,8 +8,14 @@
 yarn add tcij
 # or
 npm install tcij
+# or
+pnpm install tcij
 ```
+
+## docs
+
+[docs website](https://zwkang.github.io/tcij)
 
 ## License
 
-MIT
+[MIT](./LICENSE)
