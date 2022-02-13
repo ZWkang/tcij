@@ -5,7 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "rm -rf dist && cross-env NODE_ENV=production rollup -c",
-    "changelog": "conventional-changelog -n ./customChangelogSetting.js -p angular -i CHANGELOG.md -s -r 10000"
+    "changelog": "conventional-changelog -n ./customChangelogSetting.js -p angular -i CHANGELOG.md -s -r 10000",
+    "docs:build": "dumi build",
+    "docs:dev": "dumi dev"
   },
   "author": "zwkang<kang95630@mail.com>",
   "license": "MIT",
@@ -15,9 +17,14 @@
     "stylis": "^4.0.10"
   },
   "devDependencies": {
+    "dumi": "^1.1.38",
     "@babel/core": "^7.14.2",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@types/react": "^17.0.5",
+    "conventional-changelog-cli": "^2.0.31",
     "cross-env": "^7.0.3",
+    "husky": "4",
     "prettier": "^2.3.1",
     "react": ">=16.0.0",
     "rollup": "^2.47.0",
@@ -28,11 +35,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^2.2.0",
-    "typescript": "^4.2.4",
-    "husky": "4",
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
-    "conventional-changelog-cli": "^2.0.31"
+    "typescript": "^4.2.4"
   },
   "peerDependencies": {
     "react": ">=16.0.0"
